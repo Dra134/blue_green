@@ -45,15 +45,15 @@ module "codebuild" {
 }
 
 module "codedeploy" {
-  source                 = "./modules/codedeploy"
-  codecommit_repo        = module.codecommit.repository
-  ecr_repository         = module.ecr.repository_url
-  ecs_cluster            = module.ecs.cluster_name
-  ecs_services           = [module.ecs.blue_service_name, module.ecs.green_service_name]
-  load_balancer          = module.alb.load_balancer
-  target_groups          = [module.alb.blue_target_group_arn, module.alb.green_target_group_arn]
-  codedeploy_role_arn    = module.iam.codedeploy_role_arn
-  listener_http_arn      = module.alb.listener_http_arn
+  source                  = "./modules/codedeploy"
+  codecommit_repo         = module.codecommit.repository
+  ecr_repository          = module.ecr.repository_url
+  ecs_cluster             = module.ecs.cluster_name
+  ecs_services            = [module.ecs.blue_service_name, module.ecs.green_service_name]
+  load_balancer           = module.alb.load_balancer
+  target_groups           = [module.alb.blue_target_group_arn, module.alb.green_target_group_arn]
+  codedeploy_role_arn     = module.iam.codedeploy_role_arn
+  listener_http_arn       = module.alb.listener_http_arn
   listener_http_green_arn = module.alb.listener_http_green_arn
 }
 
